@@ -248,7 +248,338 @@ def render():
     top_html=''.join(post_html(i,'Maior interação') for i in top) or '<div class="empty">As métricas aparecerão após a conexão da Meta API.</div>'
     change=f'<div class="change">+{delta} novas seguidoras</div>' if delta>1 else ('<div class="change">+1 nova seguidora</div>' if delta==1 else '')
     toast=f'<div class="toast"><small>Nova seguidora</small><b>{esc(cfg["WELCOME_MESSAGE"])}</b><span>✨ ♡ ✨</span></div>' if delta>0 else ''
-    css='''<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@500;600&display=swap');#MainMenu,footer,header{visibility:hidden}.stApp{background:#f4efeb;color:#4c3540;font-family:Montserrat}.block-container{padding:22px 30px;max-width:100%}.shell{max-width:1500px;margin:auto}.header{display:flex;gap:22px;align-items:center;margin-bottom:20px}.brand{display:flex;gap:16px;align-items:center}.logo{width:104px;height:104px;border-radius:26px;background:#fffafb;border:1px solid #dfd3d6;display:flex;align-items:center;justify-content:center;text-align:center}.logo strong{font:600 28px 'Playfair Display';letter-spacing:4px}.logo span{display:block;font-size:9px;letter-spacing:5px;margin-top:8px;color:#a27484}.title{font:600 42px 'Playfair Display'}.subtitle{color:#8b727b}.campaign-strip{height:110px;flex:1;min-width:520px;background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:10px 16px;overflow:hidden}.kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.marquee{overflow:hidden;margin-top:8px}.track{display:flex;gap:12px;width:max-content;animation:scroll 32s linear infinite}.campaign-card{width:245px;height:70px;position:relative;overflow:hidden;border-radius:17px;flex-shrink:0}.campaign-single{display:grid;grid-template-rows:20px 1fr}.single-campaign{height:74px;margin-top:4px}.single-campaign .campaign-card{width:100%;height:74px}.single-campaign .campaign-card img{object-fit:cover}.campaign-card img{width:100%;height:100%;object-fit:cover}.overlay{position:absolute;inset:0;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(0deg,rgba(40,25,32,.85),transparent)}.overlay small{font-size:8px;letter-spacing:1px;text-transform:uppercase}.overlay b{font-size:11px}.campaign-empty{flex:1;padding:24px;background:#fffafb;border:1px dashed #cdbcc2;border-radius:24px}@keyframes scroll{to{transform:translateX(-50%)}}.grid{display:grid;grid-template-columns:390px 1fr;gap:20px}.card{background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:23px;box-shadow:0 12px 34px rgba(83,54,64,.08)}.counter-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.counter{font:600 76px 'Playfair Display';margin:14px 0 8px}.handle{color:#8b727b;font-weight:600}.change{display:inline-block;margin-top:9px;padding:8px 12px;border-radius:999px;background:#ead8df;color:#76495b;font-size:12px;font-weight:800}.main-qr{margin-top:20px;padding:17px;background:#fff;border:1px solid #eadfe2;border-radius:22px;text-align:center}.main-qr h2{font:600 25px 'Playfair Display'}.main-qr img{width:230px}.main-qr p{font-size:12px;color:#8b727b}.metric{margin-top:16px;background:#f4efeb;border:1px solid #eadfe2;border-radius:16px;padding:13px}.metric b{font-size:21px}.metric span{display:block;font-size:10px;text-transform:uppercase;color:#8b727b}.qrs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.qr{background:#fff;border:1px solid #eadfe2;border-radius:15px;padding:9px;text-align:center}.qr img{width:78px}.qr span{display:block;font-size:9px;color:#8b727b;font-weight:700}.foot{margin-top:16px;text-align:center;font-size:11px;color:#9b858d}.stack{display:flex;flex-direction:column;gap:18px}.section-title{font:600 23px 'Playfair Display';margin-bottom:13px}.posts{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.post{background:#fff;border:1px solid #eadfe2;border-radius:18px;overflow:hidden;text-decoration:none;color:#4c3540;min-height:300px}.post img{width:100%;height:165px;object-fit:cover}.post-body{padding:11px}.post-label{font-size:9px;color:#a27484;font-weight:800;text-transform:uppercase}.post-stats{font-size:12px;color:#8b727b;font-weight:700;margin-top:6px}.post-caption{font-size:11px;color:#8b727b;line-height:1.4;margin-top:7px}.empty{padding:22px;border:1px dashed #cdbcc2;border-radius:16px;color:#8b727b}.toast{position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:999999;background:#fffafb;border:1px solid #d7c6cc;border-radius:25px;padding:19px 25px;text-align:center;box-shadow:0 22px 60px rgba(83,54,64,.22)}.toast small,.toast b,.toast span{display:block}.toast small{letter-spacing:2px;text-transform:uppercase;color:#a27484}.toast b{font:600 27px 'Playfair Display';margin:8px}.toast span{color:#a27484}@media(max-width:1100px){.header{flex-wrap:wrap}.campaign-strip{flex-basis:100%;min-width:0}.grid{grid-template-columns:1fr}.posts{grid-template-columns:repeat(2,1fr)}}</style>'''
+    css='''<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@500;600&display=swap');#MainMenu,footer,header{visibility:hidden}.stApp{background:#f4efeb;color:#4c3540;font-family:Montserrat}.block-container{padding:22px 30px;max-width:100%}.shell{max-width:1500px;margin:auto}.header{display:flex;gap:22px;align-items:center;margin-bottom:20px}.brand{display:flex;gap:16px;align-items:center}.logo{width:104px;height:104px;border-radius:26px;background:#fffafb;border:1px solid #dfd3d6;display:flex;align-items:center;justify-content:center;text-align:center}.logo strong{font:600 28px 'Playfair Display';letter-spacing:4px}.logo span{display:block;font-size:9px;letter-spacing:5px;margin-top:8px;color:#a27484}.title{font:600 42px 'Playfair Display'}.subtitle{color:#8b727b}.campaign-strip{height:110px;flex:1;min-width:520px;background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:10px 16px;overflow:hidden}.kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.marquee{overflow:hidden;margin-top:8px}.track{display:flex;gap:12px;width:max-content;animation:scroll 32s linear infinite}.campaign-card{width:245px;height:70px;position:relative;overflow:hidden;border-radius:17px;flex-shrink:0}.campaign-single{display:grid;grid-template-rows:20px 1fr}.single-campaign{height:74px;margin-top:4px}.single-campaign .campaign-card{width:100%;height:74px}.single-campaign .campaign-card img{object-fit:cover}.campaign-card img{width:100%;height:100%;object-fit:cover}.overlay{position:absolute;inset:0;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(0deg,rgba(40,25,32,.85),transparent)}.overlay small{font-size:8px;letter-spacing:1px;text-transform:uppercase}.overlay b{font-size:11px}.campaign-empty{flex:1;padding:24px;background:#fffafb;border:1px dashed #cdbcc2;border-radius:24px}@keyframes scroll{to{transform:translateX(-50%)}}.grid{display:grid;grid-template-columns:390px 1fr;gap:20px}.card{background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:23px;box-shadow:0 12px 34px rgba(83,54,64,.08)}.counter-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.counter{font:600 76px 'Playfair Display';margin:14px 0 8px}.handle{color:#8b727b;font-weight:600}.change{display:inline-block;margin-top:9px;padding:8px 12px;border-radius:999px;background:#ead8df;color:#76495b;font-size:12px;font-weight:800}.main-qr{margin-top:20px;padding:17px;background:#fff;border:1px solid #eadfe2;border-radius:22px;text-align:center}.main-qr h2{font:600 25px 'Playfair Display'}.main-qr img{width:230px}.main-qr p{font-size:12px;color:#8b727b}.metric{margin-top:16px;background:#f4efeb;border:1px solid #eadfe2;border-radius:16px;padding:13px}.metric b{font-size:21px}.metric span{display:block;font-size:10px;text-transform:uppercase;color:#8b727b}.qrs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.qr{background:#fff;border:1px solid #eadfe2;border-radius:15px;padding:9px;text-align:center}.qr img{width:78px}.qr span{display:block;font-size:9px;color:#8b727b;font-weight:700}.foot{margin-top:16px;text-align:center;font-size:11px;color:#9b858d}.stack{display:flex;flex-direction:column;gap:18px}.section-title{font:600 23px 'Playfair Display';margin-bottom:13px}.posts{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.post{background:#fff;border:1px solid #eadfe2;border-radius:18px;overflow:hidden;text-decoration:none;color:#4c3540;min-height:300px}.post img{width:100%;height:165px;object-fit:cover}.post-body{padding:11px}.post-label{font-size:9px;color:#a27484;font-weight:800;text-transform:uppercase}.post-stats{font-size:12px;color:#8b727b;font-weight:700;margin-top:6px}.post-caption{font-size:11px;color:#8b727b;line-height:1.4;margin-top:7px}.empty{padding:22px;border:1px dashed #cdbcc2;border-radius:16px;color:#8b727b}.toast{position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:999999;background:#fffafb;border:1px solid #d7c6cc;border-radius:25px;padding:19px 25px;text-align:center;box-shadow:0 22px 60px rgba(83,54,64,.22)}.toast small,.toast b,.toast span{display:block}.toast small{letter-spacing:2px;text-transform:uppercase;color:#a27484}.toast b{font:600 27px 'Playfair Display';margin:8px}.toast span{color:#a27484}@media(max-width:1100px){.header{flex-wrap:wrap}.campaign-strip{flex-basis:100%;min-width:0}.grid{grid-template-columns:1fr}.posts{grid-template-columns:repeat(2,1fr)}}
+html, body, [data-testid="stAppViewContainer"], .stApp {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+}
+
+[data-testid="stAppViewContainer"] > .main {
+    height: 100vh !important;
+    overflow: hidden !important;
+}
+
+.block-container {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    padding: 10px 14px 10px 14px !important;
+    overflow: hidden !important;
+}
+
+.shell {
+    width: 100%;
+    height: calc(100vh - 20px);
+    max-width: none !important;
+    display: grid;
+    grid-template-rows: 82px 1fr;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.header {
+    margin: 0 !important;
+    min-height: 82px;
+    height: 82px;
+    gap: 12px !important;
+}
+
+.brand {
+    min-width: 300px;
+    gap: 10px !important;
+}
+
+.logo {
+    width: 74px !important;
+    height: 74px !important;
+    border-radius: 20px !important;
+}
+
+.logo strong {
+    font-size: 23px !important;
+}
+
+.logo span {
+    font-size: 7px !important;
+    letter-spacing: 4px !important;
+    margin-top: 6px !important;
+}
+
+.title {
+    font-size: 34px !important;
+    line-height: 1 !important;
+}
+
+.subtitle {
+    font-size: 13px !important;
+    margin-top: 4px !important;
+}
+
+.campaign-strip {
+    height: 82px !important;
+    min-width: 0 !important;
+    padding: 7px 10px !important;
+    border-radius: 20px !important;
+}
+
+.kicker {
+    font-size: 9px !important;
+}
+
+.marquee {
+    margin-top: 4px !important;
+}
+
+.campaign-card,
+.single-campaign .campaign-card {
+    height: 54px !important;
+}
+
+.campaign-card {
+    width: 205px !important;
+    border-radius: 13px !important;
+}
+
+.single-campaign {
+    height: 56px !important;
+}
+
+.grid {
+    height: 100%;
+    min-height: 0;
+    display: grid !important;
+    grid-template-columns: 300px 1fr !important;
+    gap: 10px !important;
+    overflow: hidden;
+}
+
+.grid > .card,
+.stack {
+    min-height: 0;
+}
+
+.card {
+    padding: 14px !important;
+    border-radius: 20px !important;
+}
+
+.counter-label {
+    font-size: 10px !important;
+    letter-spacing: 1.5px !important;
+}
+
+.counter {
+    font-size: 58px !important;
+    margin: 8px 0 4px !important;
+}
+
+.handle {
+    font-size: 13px !important;
+}
+
+.change {
+    margin-top: 5px !important;
+    padding: 5px 9px !important;
+    font-size: 10px !important;
+}
+
+.main-qr {
+    margin-top: 10px !important;
+    padding: 10px !important;
+    border-radius: 16px !important;
+}
+
+.main-qr h2 {
+    font-size: 19px !important;
+    margin: 0 0 6px 0 !important;
+    line-height: 1.1 !important;
+}
+
+.main-qr img {
+    width: 145px !important;
+}
+
+.main-qr p {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+    margin: 5px 0 0 0 !important;
+}
+
+.metric {
+    margin-top: 8px !important;
+    padding: 8px !important;
+    border-radius: 12px !important;
+}
+
+.metric b {
+    font-size: 17px !important;
+}
+
+.metric span {
+    font-size: 8px !important;
+}
+
+.qrs {
+    margin-top: 8px !important;
+    gap: 6px !important;
+}
+
+.qr {
+    padding: 5px !important;
+    border-radius: 11px !important;
+}
+
+.qr img {
+    width: 48px !important;
+}
+
+.qr span {
+    font-size: 7px !important;
+}
+
+.foot {
+    margin-top: 7px !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+}
+
+.stack {
+    height: 100%;
+    display: grid !important;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px !important;
+    overflow: hidden;
+}
+
+.stack > .card {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.05 !important;
+}
+
+.posts {
+    height: calc(100% - 28px);
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    overflow: hidden;
+}
+
+.post {
+    min-height: 0 !important;
+    height: 100%;
+    border-radius: 13px !important;
+    overflow: hidden;
+}
+
+.post img {
+    height: 105px !important;
+}
+
+.post-body {
+    padding: 7px !important;
+}
+
+.post-label {
+    font-size: 7px !important;
+}
+
+.post-stats {
+    font-size: 9px !important;
+    margin-top: 3px !important;
+}
+
+.post-caption {
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+    margin-top: 4px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.empty {
+    padding: 12px !important;
+    font-size: 10px !important;
+}
+
+.toast {
+    top: 12px !important;
+    padding: 10px 16px !important;
+    border-radius: 18px !important;
+}
+
+.toast b {
+    font-size: 16px !important;
+}
+
+/* Tablet 10" landscape: 1024x600, 1280x800, 1366x768 */
+@media (max-width: 1100px) {
+    .header {
+        flex-wrap: nowrap !important;
+    }
+
+    .campaign-strip {
+        flex-basis: auto !important;
+    }
+
+    .grid {
+        grid-template-columns: 285px 1fr !important;
+    }
+
+    .posts {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Ajuste para tablets 10" em modo retrato */
+@media (orientation: portrait) {
+    .shell {
+        grid-template-rows: 76px 1fr;
+    }
+
+    .header {
+        height: 76px;
+        min-height: 76px;
+    }
+
+    .brand {
+        min-width: 240px;
+    }
+
+    .title {
+        font-size: 28px !important;
+    }
+
+    .grid {
+        grid-template-columns: 250px 1fr !important;
+    }
+
+    .posts {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .post img {
+        height: 92px !important;
+    }
+
+    .post-caption {
+        -webkit-line-clamp: 3;
+    }
+
+    .campaign-card {
+        width: 170px !important;
+    }
+}
+
+</style>'''
     page=f'''<div class="shell">{toast}<div class="header"><div class="brand"><div class="logo"><div><strong>LIIVV</strong><span>BEAUTY</span></div></div><div><div class="title">{esc(cfg['BRAND_NAME'])}</div><div class="subtitle">@{esc(data['username'])}</div></div></div>{campaign_html(pubs)}</div><div class="grid"><div class="card"><div class="counter-label">Seguidores no Instagram</div><div class="counter">{data['followers']:,}</div><div class="handle">@{esc(data['username'])}</div>{change}<div class="main-qr"><h2>{esc(cfg['CTA_TITLE'])}</h2><img src="{qr_data_uri(cfg['PROFILE_URL'])}"><p>{esc(cfg['CTA_SUBTITLE'])}</p></div><div class="metric"><b>{data['media_count']}</b><span>publicações</span></div><div class="qrs"><div class="qr"><img src="{qr_data_uri(cfg['BOOKING_URL'])}"><span>Agendamento</span></div><div class="qr"><img src="{qr_data_uri(cfg['SECONDARY_URL'])}"><span>Conheça a LIIVV</span></div></div><div class="foot">{esc(cfg['FOOTER_TEXT'])}</div></div><div class="stack"><div class="card"><div class="section-title">Últimos conteúdos</div><div class="posts">{latest_html}</div></div><div class="card"><div class="section-title">Conteúdos com maior interação</div><div class="posts">{top_html}</div></div></div></div></div>'''
     st.markdown(css+page, unsafe_allow_html=True)
 
