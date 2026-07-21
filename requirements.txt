@@ -1,0 +1,6 @@
+streamlit>=1.39,<2
+streamlit-autorefresh>=1.0.1
+requests>=2.32.3
+qrcode[pil]>=7.4.2
+gspread>=6.1.0
+google-auth>=2.30.0
