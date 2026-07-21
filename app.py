@@ -251,81 +251,81 @@ def render():
     css='''<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@500;600&display=swap');#MainMenu,footer,header{visibility:hidden}.stApp{background:#f4efeb;color:#4c3540;font-family:Montserrat}.block-container{padding:22px 30px;max-width:100%}.shell{max-width:1500px;margin:auto}.header{display:flex;gap:22px;align-items:center;margin-bottom:20px}.brand{display:flex;gap:16px;align-items:center}.logo{width:104px;height:104px;border-radius:26px;background:#fffafb;border:1px solid #dfd3d6;display:flex;align-items:center;justify-content:center;text-align:center}.logo strong{font:600 28px 'Playfair Display';letter-spacing:4px}.logo span{display:block;font-size:9px;letter-spacing:5px;margin-top:8px;color:#a27484}.title{font:600 42px 'Playfair Display'}.subtitle{color:#8b727b}.campaign-strip{height:110px;flex:1;min-width:520px;background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:10px 16px;overflow:hidden}.kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.marquee{overflow:hidden;margin-top:8px}.track{display:flex;gap:12px;width:max-content;animation:scroll 32s linear infinite}.campaign-card{width:245px;height:70px;position:relative;overflow:hidden;border-radius:17px;flex-shrink:0}.campaign-single{display:grid;grid-template-rows:20px 1fr}.single-campaign{height:74px;margin-top:4px}.single-campaign .campaign-card{width:100%;height:74px}.single-campaign .campaign-card img{object-fit:cover}.campaign-card img{width:100%;height:100%;object-fit:cover}.overlay{position:absolute;inset:0;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(0deg,rgba(40,25,32,.85),transparent)}.overlay small{font-size:8px;letter-spacing:1px;text-transform:uppercase}.overlay b{font-size:11px}.campaign-empty{flex:1;padding:24px;background:#fffafb;border:1px dashed #cdbcc2;border-radius:24px}@keyframes scroll{to{transform:translateX(-50%)}}.grid{display:grid;grid-template-columns:390px 1fr;gap:20px}.card{background:#fffafb;border:1px solid #dfd3d6;border-radius:26px;padding:23px;box-shadow:0 12px 34px rgba(83,54,64,.08)}.counter-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a27484;font-weight:800}.counter{font:600 76px 'Playfair Display';margin:14px 0 8px}.handle{color:#8b727b;font-weight:600}.change{display:inline-block;margin-top:9px;padding:8px 12px;border-radius:999px;background:#ead8df;color:#76495b;font-size:12px;font-weight:800}.main-qr{margin-top:20px;padding:17px;background:#fff;border:1px solid #eadfe2;border-radius:22px;text-align:center}.main-qr h2{font:600 25px 'Playfair Display'}.main-qr img{width:230px}.main-qr p{font-size:12px;color:#8b727b}.metric{margin-top:16px;background:#f4efeb;border:1px solid #eadfe2;border-radius:16px;padding:13px}.metric b{font-size:21px}.metric span{display:block;font-size:10px;text-transform:uppercase;color:#8b727b}.qrs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.qr{background:#fff;border:1px solid #eadfe2;border-radius:15px;padding:9px;text-align:center}.qr img{width:78px}.qr span{display:block;font-size:9px;color:#8b727b;font-weight:700}.foot{margin-top:16px;text-align:center;font-size:11px;color:#9b858d}.stack{display:flex;flex-direction:column;gap:18px}.section-title{font:600 23px 'Playfair Display';margin-bottom:13px}.posts{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.post{background:#fff;border:1px solid #eadfe2;border-radius:18px;overflow:hidden;text-decoration:none;color:#4c3540;min-height:300px}.post img{width:100%;height:165px;object-fit:cover}.post-body{padding:11px}.post-label{font-size:9px;color:#a27484;font-weight:800;text-transform:uppercase}.post-stats{font-size:12px;color:#8b727b;font-weight:700;margin-top:6px}.post-caption{font-size:11px;color:#8b727b;line-height:1.4;margin-top:7px}.empty{padding:22px;border:1px dashed #cdbcc2;border-radius:16px;color:#8b727b}.toast{position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:999999;background:#fffafb;border:1px solid #d7c6cc;border-radius:25px;padding:19px 25px;text-align:center;box-shadow:0 22px 60px rgba(83,54,64,.22)}.toast small,.toast b,.toast span{display:block}.toast small{letter-spacing:2px;text-transform:uppercase;color:#a27484}.toast b{font:600 27px 'Playfair Display';margin:8px}.toast span{color:#a27484}@media(max-width:1100px){.header{flex-wrap:wrap}.campaign-strip{flex-basis:100%;min-width:0}.grid{grid-template-columns:1fr}.posts{grid-template-columns:repeat(2,1fr)}}
 html, body, [data-testid="stAppViewContainer"], .stApp {
     width: 100vw !important;
-    height: 100vh !important;
     min-height: 100vh !important;
-    overflow: hidden !important;
+    min-min-height: 100vh !important;
+    overflow-x: hidden !important;
 }
 
 [data-testid="stAppViewContainer"] > .main {
-    height: 100vh !important;
-    overflow: hidden !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
 }
 
 .block-container {
     width: 100vw !important;
-    height: 100vh !important;
+    min-height: 100vh !important;
     max-width: none !important;
     padding: 10px 14px 10px 14px !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
 }
 
 .shell {
     width: 100%;
-    height: calc(100vh - 20px);
+    min-height: calc(100vh - 20px);
     max-width: none !important;
     display: grid;
-    grid-template-rows: 82px 1fr;
+    grid-template-rows: 68px auto;
     gap: 10px;
     overflow: hidden;
 }
 
 .header {
     margin: 0 !important;
-    min-height: 82px;
-    height: 82px;
+    min-height: 68px;
+    height: 68px;
     gap: 12px !important;
 }
 
 .brand {
-    min-width: 300px;
+    min-width: 250px;
     gap: 10px !important;
 }
 
 .logo {
-    width: 74px !important;
-    height: 74px !important;
+    width: 60px !important;
+    height: 60px !important;
     border-radius: 20px !important;
 }
 
 .logo strong {
-    font-size: 23px !important;
+    font-size: 15px !important;
 }
 
 .logo span {
-    font-size: 7px !important;
+    font-size: 6px !important;
     letter-spacing: 4px !important;
     margin-top: 6px !important;
 }
 
 .title {
-    font-size: 34px !important;
+    font-size: 28px !important;
     line-height: 1 !important;
 }
 
 .subtitle {
-    font-size: 13px !important;
+    font-size: 11px !important;
     margin-top: 4px !important;
 }
 
 .campaign-strip {
-    height: 82px !important;
+    height: 68px !important;
     min-width: 0 !important;
-    padding: 7px 10px !important;
+    padding: 6px 8px !important;
     border-radius: 20px !important;
 }
 
 .kicker {
-    font-size: 9px !important;
+    font-size: 10px !important;
 }
 
 .marquee {
@@ -334,23 +334,23 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 
 .campaign-card,
 .single-campaign .campaign-card {
-    height: 54px !important;
+    height: 44px !important;
 }
 
 .campaign-card {
-    width: 205px !important;
+    width: 165px !important;
     border-radius: 13px !important;
 }
 
 .single-campaign {
-    height: 56px !important;
+    height: 46px !important;
 }
 
 .grid {
     height: 100%;
     min-height: 0;
     display: grid !important;
-    grid-template-columns: 300px 1fr !important;
+    grid-template-columns: 250px 1fr !important;
     gap: 10px !important;
     overflow: hidden;
 }
@@ -361,7 +361,7 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .card {
-    padding: 14px !important;
+    padding: 11px !important;
     border-radius: 20px !important;
 }
 
@@ -371,12 +371,12 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .counter {
-    font-size: 58px !important;
+    font-size: 48px !important;
     margin: 8px 0 4px !important;
 }
 
 .handle {
-    font-size: 13px !important;
+    font-size: 11px !important;
 }
 
 .change {
@@ -392,17 +392,17 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .main-qr h2 {
-    font-size: 19px !important;
+    font-size: 15px !important;
     margin: 0 0 6px 0 !important;
     line-height: 1.1 !important;
 }
 
 .main-qr img {
-    width: 145px !important;
+    width: 132px !important;
 }
 
 .main-qr p {
-    font-size: 9px !important;
+    font-size: 10px !important;
     line-height: 1.25 !important;
     margin: 5px 0 0 0 !important;
 }
@@ -414,11 +414,11 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .metric b {
-    font-size: 17px !important;
+    font-size: 15px !important;
 }
 
 .metric span {
-    font-size: 8px !important;
+    font-size: 10px !important;
 }
 
 .qrs {
@@ -432,16 +432,16 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .qr img {
-    width: 48px !important;
+    width: 42px !important;
 }
 
 .qr span {
-    font-size: 7px !important;
+    font-size: 6px !important;
 }
 
 .foot {
     margin-top: 7px !important;
-    font-size: 8px !important;
+    font-size: 10px !important;
     line-height: 1.2 !important;
 }
 
@@ -459,7 +459,7 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .section-title {
-    font-size: 18px !important;
+    font-size: 19px !important;
     margin-bottom: 8px !important;
     line-height: 1.05 !important;
 }
@@ -479,28 +479,28 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 .post img {
-    height: 105px !important;
+    height: 78px !important;
 }
 
 .post-body {
-    padding: 7px !important;
+    padding: 8px !important;
 }
 
 .post-label {
-    font-size: 7px !important;
+    font-size: 6px !important;
 }
 
 .post-stats {
-    font-size: 9px !important;
+    font-size: 10px !important;
     margin-top: 3px !important;
 }
 
 .post-caption {
-    font-size: 8px !important;
+    font-size: 10px !important;
     line-height: 1.2 !important;
     margin-top: 4px !important;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -531,7 +531,7 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
     }
 
     .grid {
-        grid-template-columns: 285px 1fr !important;
+        grid-template-columns: 245px 1fr !important;
     }
 
     .posts {
@@ -576,6 +576,99 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 
     .campaign-card {
         width: 170px !important;
+    }
+}
+
+
+html, body, [data-testid="stAppViewContainer"], .stApp {
+    overflow-y: auto !important;
+}
+
+[data-testid="stAppViewContainer"] > .main {
+    overflow-y: auto !important;
+}
+
+.block-container {
+    overflow: visible !important;
+    padding-bottom: 24px !important;
+}
+
+.shell {
+    overflow: visible !important;
+}
+
+.grid,
+.stack,
+.stack > .card {
+    overflow: visible !important;
+}
+
+.grid {
+    align-items: start !important;
+}
+
+.stack {
+    height: auto !important;
+    grid-template-rows: auto auto !important;
+}
+
+.stack > .card {
+    height: auto !important;
+}
+
+.posts {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.post {
+    height: auto !important;
+    min-height: 190px !important;
+}
+
+.post img {
+    height: 78px !important;
+}
+
+.post-label {
+    font-size: 9px !important;
+}
+
+.post-stats {
+    font-size: 10px !important;
+}
+
+.post-caption {
+    font-size: 10px !important;
+    line-height: 1.28 !important;
+}
+
+.main-qr {
+    overflow: visible !important;
+}
+
+.main-qr img {
+    width: 132px !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+/* Garante que o QR principal apareça inteiro na primeira dobra */
+.grid > .card:first-child {
+    min-height: 0 !important;
+}
+
+@media (max-width: 1100px) {
+    .posts {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .posts {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
 }
 
