@@ -672,6 +672,113 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
     }
 }
 
+
+/* ===== AJUSTE FINAL DOS POSTS PARA TABLET ===== */
+
+.posts {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+}
+
+.post {
+    display: grid !important;
+    grid-template-rows: 108px auto !important;
+    min-height: 250px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: #fff !important;
+}
+
+/* Foto mais estreita visualmente e melhor enquadrada */
+.post img {
+    width: 78% !important;
+    height: 108px !important;
+    margin: 0 auto !important;
+    object-fit: cover !important;
+    object-position: center 35% !important;
+    display: block !important;
+    border-radius: 0 0 14px 14px !important;
+    background: #eadfe2 !important;
+}
+
+/* Conteúdo interno com mais espaço */
+.post-body {
+    padding: 12px 12px 14px 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 7px !important;
+}
+
+/* Fonte aumentada em aproximadamente 200% em relação à versão anterior */
+.post-label {
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .6px !important;
+    font-weight: 800 !important;
+}
+
+.post-stats {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
+    font-weight: 700 !important;
+}
+
+.post-caption {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    margin-top: 0 !important;
+    color: #5f4851 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 1100px) {
+    .posts {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    .post img {
+        width: 74% !important;
+        height: 96px !important;
+        object-position: center 32% !important;
+    }
+
+    .post-label {
+        font-size: 14px !important;
+    }
+
+    .post-stats {
+        font-size: 16px !important;
+    }
+
+    .post-caption {
+        font-size: 18px !important;
+        line-height: 1.22 !important;
+        -webkit-line-clamp: 4 !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .posts {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .post img {
+        width: 70% !important;
+        height: 92px !important;
+    }
+
+    .post-caption {
+        font-size: 17px !important;
+    }
+}
+
 </style>'''
     page=f'''<div class="shell">{toast}<div class="header"><div class="brand"><div class="logo"><div><strong>LIIVV</strong><span>BEAUTY</span></div></div><div><div class="title">{esc(cfg['BRAND_NAME'])}</div><div class="subtitle">@{esc(data['username'])}</div></div></div>{campaign_html(pubs)}</div><div class="grid"><div class="card"><div class="counter-label">Seguidores no Instagram</div><div class="counter">{data['followers']:,}</div><div class="handle">@{esc(data['username'])}</div>{change}<div class="main-qr"><h2>{esc(cfg['CTA_TITLE'])}</h2><img src="{qr_data_uri(cfg['PROFILE_URL'])}"><p>{esc(cfg['CTA_SUBTITLE'])}</p></div><div class="metric"><b>{data['media_count']}</b><span>publicações</span></div><div class="qrs"><div class="qr"><img src="{qr_data_uri(cfg['BOOKING_URL'])}"><span>Agendamento</span></div><div class="qr"><img src="{qr_data_uri(cfg['SECONDARY_URL'])}"><span>Conheça a LIIVV</span></div></div><div class="foot">{esc(cfg['FOOTER_TEXT'])}</div></div><div class="stack"><div class="card"><div class="section-title">Últimos conteúdos</div><div class="posts">{latest_html}</div></div><div class="card"><div class="section-title">Conteúdos com maior interação</div><div class="posts">{top_html}</div></div></div></div></div>'''
     st.markdown(css+page, unsafe_allow_html=True)
